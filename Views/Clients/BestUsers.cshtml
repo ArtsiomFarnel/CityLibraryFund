@@ -1,0 +1,29 @@
+﻿@{
+    @model BestUsersViewModel
+    ViewData["Title"] = "Best Clients";
+}
+<div class="text-right">
+    <a asp-action="Profile" asp-controller="Clients">Ваш профиль</a>
+    @if (Model.IsUser)
+    {
+        <a asp-action="AdministrateUsers" asp-controller="Clients">
+            <input type="button" value="Редактировать" class="btn btn-outline-dark">
+        </a>
+    }
+</div>
+<div class="text-center">
+    <h3>Лучшие читатели</h3>
+</div>
+<table class="table">
+    <tr>
+        <td>Имя</td>
+        <td>Количество прочитанных книг</td>
+    </tr>
+    @foreach (var item in Model.bestUsers)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Count</td>
+        </tr>
+    }
+</table>

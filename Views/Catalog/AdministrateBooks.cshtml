@@ -1,0 +1,30 @@
+﻿@{
+    @model IEnumerable<CityLibraryFund.Models.Entities.Copy>
+    ViewData["Title"] = "Administrate Catalog";
+}
+<div class="text-center">
+    <h3>Only for admin and (maybe) employe</h3>
+    <p>edit/delete/insert a records in DB</p>
+</div>
+<a asp-action="InsertBook" asp-controller="Catalog">Insert</a>
+<table class="table">
+    <tr>
+        <td>Book Id</td>
+        <td>Lib Id</td>
+        <td>Amount</td>
+        <!--<td>Operation</td>-->
+    </tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>@item.BookId</td>
+    <td>@item.LibraryId</td>
+    <td>@item.Amount</td>
+    <!--<td>
+        <a asp-action="DetailBook" asp-controller="Catalog" asp-route-id="@item.Id">Detail</a> |
+        <a asp-action="UpdateBook" asp-controller="Catalog" asp-route-id="@item.Id">Update</a> |
+        <a asp-action="DeleteBook" asp-controller="Catalog" asp-route-id="@item.Id">Delete</a>
+    </td>-->
+</tr>
+    }
+</table>

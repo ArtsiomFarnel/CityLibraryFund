@@ -1,0 +1,27 @@
+﻿@{
+    @model IEnumerable<DebtsViewModel>
+    ViewData["Title"] = "Take operation";
+}
+<div>
+    <h3>Ваши книги</h3><br />
+    <div class="main-content margin-none">
+    @foreach (var item in Model)
+    {
+        <div class="container one-block">
+            <h3>@item.BookName</h3>
+            <img class="img-thumbnail img-size" src="@Url.Content(item.BookImage)" alt="@item.BookName" align="left" />
+            <p>
+                <b>Автор:</b> @item.BookAuthor<br />
+                <b>Год:</b> @item.BookYear<br />
+                <b>Оценка читателей:</b> @item.BookRating<br />
+            </p>
+            <a asp-controller="Clients" asp-action="ReturnBook"
+               asp-route-bookId="@item.BookId"
+               asp-route-libraryId="@item.LibId">Вернуть</a><br />
+            <a asp-controller="Clients" asp-action="SetRating"
+               asp-route-bookId="@item.BookId"
+               asp-route-libId="@item.LibId">Оценить</a>
+        </div>
+    }
+    </div>
+</div>

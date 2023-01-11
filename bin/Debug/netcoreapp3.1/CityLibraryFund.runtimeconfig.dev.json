@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\leeqviz\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\leeqviz\\.nuget\\packages"
+    ]
+  }
+}

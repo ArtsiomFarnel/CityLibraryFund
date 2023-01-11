@@ -1,0 +1,17 @@
+﻿@{
+    @using CityLibraryFund.Models.Entities
+    @model User
+    ViewData["Title"] = "User Account";
+}
+<div class="text-center">
+    <h3>Страница пользователя</h3>
+</div>
+<div class="profile-content one-block">
+    <p><b>Имя пользователя</b> - @Model.Name</p>
+    <p><b>Дата регистрации</b> - @Model.DateOfRegistration</p>
+    <p><b>Просмотреть текущие книги</b> - 
+        <a asp-action="ClientsBooks" asp-controller="Clients" asp-route-id="@Model.Id">
+            <input type="button" value="Ваши книги" class="btn btn-outline-dark">
+        </a>
+    </p>
+</div>

@@ -1,0 +1,27 @@
+﻿@{
+    @model DetailViewModel
+    ViewData["Title"] = "Detail";
+}
+<div class="main-content detail-book-content one-block">
+    <h3>Подробнее о @Model.Book.Name</h3>
+    <img class="img-thumbnail img-size" align="left" src="@Url.Content(Model.Book.Image)" alt="@Model.Book.Name" />
+    <p><b>Краткое описание:</b> @Model.Book.Description</p>
+    <p><b>Автор:</b> @Model.Book.Author</p>
+    <p><b>Год:</b> @Model.Book.Year</p>
+    <p><b>Оценка читателей:</b> @Model.Book.Rating</p>
+    <p><b>Жанры: </b> @Model.Book.Genre</p>
+    <p>Есть в наличии в:</p>
+    @foreach (var item in Model.TempViews)
+    {
+        <p>
+            <b>Библиотека</b> - @item.LibraryName<br />
+            <b>Адрес</b> - @item.LibraryAddress
+            <a asp-action="TakeBook" asp-controller="Clients"
+               asp-route-userId="@Model.User.Id"
+               asp-route-bookId="@Model.Book.Id"
+               asp-route-libraryId="@item.LibraryId">
+                <input type="button" value="Взять" class="btn btn-outline-dark">
+            </a>
+        </p>
+    }
+</div>

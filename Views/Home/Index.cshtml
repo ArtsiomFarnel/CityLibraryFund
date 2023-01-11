@@ -1,0 +1,52 @@
+﻿@{
+    @model NewsViewModel
+    ViewData["Title"] = "Главная";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Последние новинки</h1>
+    <!--<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>-->
+</div>
+<br />
+
+@if (Model.Books.Any() == false)
+{
+    <p class="text-center">За последние 10 дней не осуществлялись поставки новых книг!</p>
+}
+else
+{
+<div class="block-vertical-middle">
+    @foreach (var item in Model.Books)
+    {
+        <div class="container one-block-main">
+            <h3>@item.BookName</h3>
+            <img class="img-thumbnail img-size" src="@Url.Content(item.BookImage)" alt="@item.BookName" align="left" />
+            <p>
+                <b>Автор:</b> @item.BookAuthor<br />
+                <b>Год:</b> @item.BookYear<br />
+                <b>Оценка читателей:</b> @item.BookRating<br />
+                <a asp-action="Detail" asp-controller="Catalog" asp-route-id="@item.BookId">Детали</a>
+            </p>
+        </div>
+    }
+</div>
+}
+    
+    @if (Model.PageViewModel.HasPreviousPage)
+    {
+        <a asp-action="Index"
+           asp-controller="Home"
+           asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+           class="btn  btn-outline-dark">
+            Назад
+        </a>
+    }
+    @if (Model.PageViewModel.HasNextPage)
+    {
+        <a asp-action="Index"
+           asp-controller="Home"
+           asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+           class="btn btn-outline-dark">
+            Вперед
+        </a>
+    }

@@ -1,0 +1,11 @@
+﻿@{
+    @model TakeBookViewModel
+    ViewData["Title"] = "Take operation";
+}
+<div class="main-content detail-book-content one-block">
+    <h3>Операция выполнена успешно</h3>
+    <p>Book - @Model.Operation.BookId</p>
+    <p>User - @Model.Operation.UserId</p>
+    <p></p>
+    <p>Operation - @Model.Operation.Name</p>
+</div>

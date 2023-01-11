@@ -1,0 +1,25 @@
+﻿@model CityLibraryFund.Models.Entities.User
+@{
+    ViewBag.Title = "Insert a user";
+}
+<form asp-controller="Clients" asp-action="InsertUser">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Name</label>
+        <input type="text" asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input value="test" hidden type="text" asp-for="Email" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input value="test" hidden type="text" asp-for="Password" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input value="@DateTime.Now" hidden type="text" asp-for="DateOfRegistration" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input value="2" hidden type="text" asp-for="RoleId" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Insert" class="btn-default" />
+    </div>
+</form>

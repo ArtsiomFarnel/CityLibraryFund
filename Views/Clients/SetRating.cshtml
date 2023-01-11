@@ -1,0 +1,16 @@
+﻿@{
+    @model CityLibraryFund.Models.Entities.Debt
+    ViewData["Title"] = "Set Rating";
+}
+<div class="main-content detail-book-content one-block">
+    <form asp-action="SetRating" asp-controller="Clients" asp-anti-forgery="true">
+        <div>
+            <h3>Выставление оценки</h3>
+            <input type="range" name="rating" min="0" max="10" step="1" value="0"><label>Оценка</label><br />
+            <input id="isFinished" type="checkbox" name="isFinished" value="true" /><label> - Прочитано</label>
+            <input name="isFinished" type="hidden" value="false" /><br />
+            <input asp-route-libId="@Model.LibraryId" asp-route-bookId="@Model.BookId" type="submit" value="Set" class="btn btn-outline-dark" />
+        </div>
+    </form>
+</div>
+

@@ -1,0 +1,68 @@
+﻿@{
+    @model CatalogViewModel
+    ViewData["Title"] = "Catalog";
+}
+<div class="control-menu">
+    <form method="get">
+        <label>Поиск: </label>
+        <input type="search" name="searchResult" class="form-control" /><br />
+        <label>Искать по: </label>
+        <p><input value="name" type="radio" name="flag" checked /> - название</p>
+        <p><input value="autor" type="radio" name="flag" /> - автор</p><br />
+        <label>Фильтровать по: </label>
+        <select name="genre" class="form-control">
+            <option>All</option>
+            <option>фэнтези</option>
+            <option>боевик</option>
+            <option>комедия</option>
+            <option>драма</option>
+            <option>трилер</option>
+        </select><br />
+        <label>Сортировать по: </label>
+        <select name="sort" class="form-control">
+            <option>оценка</option>
+            <option>год</option>
+            <option>название</option>
+        </select><br />
+        <input type="submit" value="Принять" class="btn btn-outline-dark" />
+        @if (Model.IsUser)
+        {
+            <a asp-action="AdministrateBooks" asp-controller="Catalog">
+                <input type="button" value="Редактировать" class="btn btn-outline-dark">
+            </a>
+        }
+    </form>
+</div>
+<div class="main-content">
+    @foreach (var item in Model.Books)
+    {
+    <div class="container one-block">
+        <h3>@item.Name</h3>
+        <img class="img-thumbnail img-size" src="@Url.Content(item.Image)" alt="@item.Name" align="left" />
+        <p><b>Краткое описание:</b> @item.Description</p>
+        <p><b>Автор:</b> @item.Author</p>
+        <p><b>Год:</b> @item.Year</p>
+        <p><b>Оценка читателей:</b> @item.Rating</p>
+        <p><a asp-action="Detail" asp-controller="Catalog" asp-route-id="@item.Id">Детали</a></p>
+        <br />
+    </div>
+    }
+</div>
+@if (Model.PageViewModel.HasPreviousPage)
+{
+    <a asp-action="BookList"
+       asp-controller="Catalog"
+       asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+       class="btn  btn-outline-dark">
+       Назад
+    </a>
+}
+@if (Model.PageViewModel.HasNextPage)
+{
+    <a asp-action="BookList"
+       asp-controller="Catalog"
+       asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+       class="btn btn-outline-dark">
+       Вперед
+    </a>
+}

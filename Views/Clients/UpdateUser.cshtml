@@ -1,0 +1,25 @@
+﻿@model CityLibraryFund.Models.Entities.User
+@{
+    ViewBag.Title = "Edit a record of user " + Model.Name;
+}
+<form asp-controller="Clients" asp-action="UpdateUser" asp-route-id="@Model.Id">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Name</label>
+        <input type="text" asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input value="@Model.Email" hidden type="text" asp-for="Email" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input value="@Model.Password" hidden type="text" asp-for="Password" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input value="@Model.DateOfRegistration" hidden type="text" asp-for="DateOfRegistration" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input value="@Model.RoleId" hidden type="text" asp-for="RoleId" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn-default" />
+    </div>
+</form>

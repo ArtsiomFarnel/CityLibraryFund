@@ -1,0 +1,30 @@
+﻿@model CityLibraryFund.Models.Entities.Book
+@{
+    ViewBag.Title = "Edit a record of book " + Model.Name;
+}
+<form asp-controller="Catalog" asp-action="UpdateBook" asp-route-id="@Model.Id">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Name</label>
+        <input type="text" asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label">Description</label>
+        <input type="text" asp-for="Description" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Year" class="control-label">Year</label>
+        <input type="number" asp-for="Year" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="IsNew" class="control-label">IsNew</label>
+        <input value="true" type="radio" asp-for="IsNew" class="form-control" />
+        <input value="false" type="radio" asp-for="IsNew" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Rating" class="control-label">Rating</label>
+        <input type="number" asp-for="Rating" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn-default" />
+    </div>
+</form>

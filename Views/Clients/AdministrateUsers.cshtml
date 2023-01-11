@@ -1,0 +1,29 @@
+﻿@{
+    @model IEnumerable<CityLibraryFund.Models.Entities.User>
+    ViewData["Title"] = "Administrate Users";
+}
+<div class="text-center">
+    <h3>Only for admin and (maybe) employe</h3>
+    <p>update/delete/insert a records in DB</p>
+</div>
+<a asp-action="InsertUser" asp-controller="Clients">Insert</a><br />
+<a asp-action="ShowOperations" asp-controller="Clients">Show Operations</a>
+<table class="table">
+    <tr>
+        <td>Name</td>
+        <td>Id</td>
+        <td>Operation</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Id</td>
+            <td>
+                <a asp-action="DetailUser" asp-controller="Clients" asp-route-id="@item.Id">Detail</a> |
+                <a asp-action="UpdateUser" asp-controller="Clients" asp-route-id="@item.Id">Update</a> |
+                <a asp-action="DeleteUser" asp-controller="Clients" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
